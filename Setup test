@@ -1,0 +1,162 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CS3260Lab3
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
+        {
+            this.Text = domainUpDown1.Text;
+            
+        }
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            
+            DomainUpDown.DomainUpDownItemCollection items =
+            this.domainUpDown1.Items;
+            items.Add("byte");
+            items.Add("sbyte");
+            items.Add("int");
+            items.Add("uint");
+            items.Add("long");
+            items.Add("ulong");
+            items.Add("decimal");
+            items.Add("double");
+            items.Add("char");
+            items.Add("string");
+            items.Add("bool");
+            if (domainUpDown1.Text == "byte")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + string.Format(byte.MaxValue.ToString() + "\n" +
+                string.Format("MIN :\n") + string.Format(byte.MinValue.ToString()));
+            }
+            else if (domainUpDown1.Text == "sbyte")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + string.Format(sbyte.MaxValue.ToString() + "\n" +
+                string.Format("MIN :\n") + string.Format(sbyte.MinValue.ToString()));
+            }
+            else if (domainUpDown1.Text == "int")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + string.Format(int.MaxValue.ToString() + "\n" +
+                string.Format("MIN :\n") + string.Format(int.MinValue.ToString()));
+            }
+            else if (domainUpDown1.Text == "uint")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + string.Format(uint.MaxValue.ToString() + "\n" +
+                string.Format("MIN :\n") + string.Format(uint.MinValue.ToString()));
+            }
+            else if (domainUpDown1.Text == "long")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + string.Format(long.MaxValue.ToString() + "\n" +
+                string.Format("MIN :\n") + string.Format(long.MinValue.ToString()));
+            }
+            else if (domainUpDown1.Text == "ulong")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + string.Format(ulong.MaxValue.ToString() + "\n" +
+                string.Format("MIN :\n") + string.Format(ulong.MinValue.ToString()));
+            }
+            else if (domainUpDown1.Text == "decimal")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + string.Format(decimal.MaxValue.ToString() + "\n" +
+                string.Format("MIN :\n") + string.Format(decimal.MinValue.ToString()));
+            }
+            else if (domainUpDown1.Text == "double")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + string.Format(double.MaxValue.ToString() + "\n" +
+                string.Format("MIN :\n") + string.Format(double.MinValue.ToString()));
+            }
+            else if (domainUpDown1.Text == "bool")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + Convert.ToInt32(true) + "\n" +
+                string.Format("MIN :\n") + Convert.ToInt32(false);
+            }
+            else if (domainUpDown1.Text == "char")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + Convert.ToInt32(0xFFFF) + "\n" +
+                string.Format("MIN :\n") + Convert.ToInt32(null);
+            }
+            else if (domainUpDown1.Text == "string")
+            {
+                richTextBox1.Text = string.Format("Max :\n") + "\n" + string.Format("MIN :\n");
+            }
+            this.domainUpDown1.Text = "byte";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            Form1_Load_1(sender, e); 
+          
+            richTextBox1_TextChanged(sender, e);
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+             this.richTextBox1.Multiline = true;
+             RichTextBox box = new RichTextBox();
+            
+
+        }
+        private void DisplayAll(object sender,EventArgs e)
+        {
+
+            string data1 = string.Format("byte values  ") + string.Format(byte.MaxValue.ToString() + " , " +
+            string.Format(byte.MinValue.ToString()));
+            string data2 = string.Format("sbyte values  ")+ string.Format(sbyte.MaxValue.ToString() + " , " +
+            string.Format(sbyte.MinValue.ToString()));
+            string data3 = string.Format("int values  ") + string.Format(int.MaxValue.ToString() + " , " +
+            string.Format(int.MinValue.ToString()));
+            string data4 = string.Format("uint values  ") + string.Format(uint.MaxValue.ToString() + " ,  " +
+            string.Format(uint.MinValue.ToString()));
+            string data5 = string.Format("long values  ") + string.Format(long.MaxValue.ToString() + " , " +
+            string.Format(long.MinValue.ToString()));
+            string data6 = string.Format("ulong values  ")  + string.Format(ulong.MaxValue.ToString() + " , " +
+            string.Format(ulong.MinValue.ToString()));
+            string data7 = string.Format("decimal values  ") + string.Format(decimal.MaxValue.ToString() + " , " +
+            string.Format(decimal.MinValue.ToString()));
+            string data8 = string.Format("double values  ") + string.Format(double.MaxValue.ToString() + " ," +
+            string.Format(double.MinValue.ToString()));
+            string data9 = string.Format("char values  ")  + Convert.ToInt32(0xFFFF) + " ," + Convert.ToInt32(null);
+            string data10 = string.Format("bool values  ")  + Convert.ToInt32(true) + " ," + Convert.ToInt32(false);
+            string data11 = string.Format("String values  ");
+            string [] data = new string []
+            {
+                data1,
+                data2,
+                data3,
+                data4,
+                data5,
+                data6,
+                data7,
+                data8,
+                data9,
+                data10,
+                data11
+            };
+            richTextBox1.Lines = data;
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DisplayAll(sender, e);
+            richTextBox1_TextChanged(sender, e);
+        }
+        public override bool AutoSize { get; set; }
+    }
+
+}
